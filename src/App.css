@@ -1,0 +1,58 @@
+.App {
+  text-align: center;
+}
+
+.text {
+  margin-right: 15%;
+  margin-left: 15%;
+}
+
+#video {
+  position: fixed;
+  opacity: 10%;
+  width: 100%;
+  pointer-events: none; 
+  cursor: none
+}
+
+.back {
+  
+}
+
+.front {
+  z-index: 2;
+  position: absolute;
+}
+
+.questionLeft{
+  width: 50%;
+}
+
+.answerRight {
+  width: 50%;
+}
+
+.container {
+
+}
+
+.line {
+  display: flex;
+  margin: 10px;
+  justify-content: center;
+  margin-right: 15%;
+  margin-left: 15%;
+  height: 2px;
+  background-color: rgba(0,100,250, 0.25);
+}
+
+.blockquote { 
+  font-size: 400%;  
+  letter-spacing: -1px; 
+  color: #DFBF84; 
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0 #000;
+  margin: 10px 0 24px; 
+  text-align: center; 
+  line-height: 50px; 
+}
