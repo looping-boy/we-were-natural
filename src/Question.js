@@ -9,15 +9,19 @@ const Container = styled.div`
   justify-content: center;
 `;
 
-const Question = ({ name, reponses }) => {
+const Question = ({ name, reponses, answer }) => {
     const [check, setCheck] = useContext(CheckContext)
     const [counterCheck, setCounterCheck] = useContext(CounterCheckContext)
 
     const handleParentClick = (e) => {
-        console.log("Parent clicked")
         setCheck(true);
-        setCounterCheck(1)
+        setCounterCheck(counterCheck + 1);
     };
+
+    const handleClicked = (letter) => {
+        answer(letter);
+        //console.log(letter);
+    }
 
     return (
         <>
@@ -27,9 +31,9 @@ const Question = ({ name, reponses }) => {
                     <h1>{name}</h1>
                 </div>
                 <div className="answerRight">
-                    <Radio name={name} letter="A" > {reponses.rep1} </Radio>
-                    <Radio name={name} letter="B"> {reponses.rep2} </Radio>
-                    <Radio name={name} letter="C"> {reponses.rep3} </Radio>
+                    <Radio name={name} letter="A" clicked={() => {handleClicked("A")}} > {reponses.rep1} </Radio>
+                    <Radio name={name} letter="B" clicked={() => {handleClicked("B")}}> {reponses.rep2} </Radio>
+                    <Radio name={name} letter="C" clicked={() => {handleClicked("C")}}> {reponses.rep3} </Radio>
                 </div>
             </Container>
             

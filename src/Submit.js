@@ -1,12 +1,13 @@
 import React, {useContext} from "react";
 import {CheckContext} from "./Questions"
+import { Button } from "./Button";
 
-const Submit = () => {
+const Submit = (props) => {
   const [check] = useContext(CheckContext)
 
   return(
     <>
-      <button type="submit" disabled={check ? false : true}>Submit</button>
+      <Button onClick = {() => props.clicked()} variant="outlined" pill className="my-button" type="submit" disabled={check ? false : true}>Valider</Button>
     </>
   )
 }

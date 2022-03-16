@@ -35,7 +35,7 @@ const Label = styled.label`
 `;
 
 
-const Radio = ({ name, letter, children }) => {
+const Radio = ({ name, letter, children, clicked }) => {
   const [radio, setRadio] = useState(false)
   const [count, setCount] = useState(0)
 
@@ -43,18 +43,15 @@ const Radio = ({ name, letter, children }) => {
   useEffect(()=>{ 
     console.log(count)
     document.title = `${count}`
-    console.log("hello")
   },[count])
 
   const handleChange = (e) =>{
     setRadio(e.target.value)
     setCount(count+1)
-    console.log("hello")
   }
 
   const handleClick = (e) =>{
-    e.stopPropagation()
-    console.log("hello")
+    e.stopPropagation();
   }
 
   return (
@@ -65,9 +62,9 @@ const Radio = ({ name, letter, children }) => {
         type="radio" 
         checked={radio === `${name}`} 
         onChange={(e) => handleChange(e)}
-        onClick={(e) => handleClick(e)}
+        onClick={(e) => {handleClick(e);clicked();}}
       />
-      <Mark>{letter}</Mark>
+      <Mark className="hover">{letter}</Mark>
       {children}
     </Label>
   )

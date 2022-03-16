@@ -56,3 +56,17 @@
   text-align: center; 
   line-height: 50px; 
 }
+
+.my-button,
+.my-button:hover {
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.hover {
+  -webkit-transition: .2s all;
+}
+
+.hover:hover {
+  -webkit-filter: brightness(200%);
+}

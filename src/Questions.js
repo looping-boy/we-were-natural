@@ -77,12 +77,31 @@ export const Questions = () => {
         },
     ];
 
+    const handleClick = () => {
+        console.log('I have been clicked')
+        checkAnswers();
+    }
+
+    function checkAnswers() {
+        console.log("Checking answers");
+        console.log(counterCheck);
+        console.log(check);
+    }
+
+    const listOfAnswers = [];
+
+    function addToList(letter, i) {
+        console.log(letter + i);
+        listOfAnswers[i] = letter;
+        console.log(listOfAnswers);
+    }
+
     return (
         <>
             <div className="text">
                 <p>Salut, j'ai pas eu les coucouniettes de te demander ton numéro, alors c'est plus simple de faire un site et espérer que tu voies cette affiche.</p>
-                <p>Notre rencontre était naturelle, c'était chouette ! Si tu penses de même, tu as juste à répondre correctement à toutes ces questions et remplir le champ vide de la manière dont tu le souhaites.
-                Le text que tu auras écrit me sera transmit une fois validation faite.
+                <p>J'ai beaucoup aimé la simplicité de notre rencontre, c'était chouette ! Si tu penses de même, tu peux t'amuser à répondre correctement à toutes ces questions et tu peux également remplir le champ vide de la manière dont tu le souhaites.
+                Le texte que tu auras écrit me sera transmit une fois validation faite.
                 </p>
                 <p>☺️</p>
                 <p>Attention : Il n'y a que lorsque toutes les réponses sont correctes que je reçois une notification.</p>
@@ -95,16 +114,16 @@ export const Questions = () => {
                 <CounterCheckContext.Provider value={[counterCheck, setCounterCheck]} >
                     <CheckContext.Provider value={[check, setCheck]}>
                         {
-                            listQuestion.map(question => {
+                            listQuestion.map((question, i) => {
                                 return (
-                                    <Question name={question.name} reponses={question.reponses} key={question.name} />
+                                    <Question name={question.name} reponses={question.reponses} key={question.name} answer={(letter) => {addToList(letter, i)}}/>
                                 )
                             })
                         }
 
                         <div className="line"></div>
                         <br/>
-                        <Submit />
+                        <Submit clicked = {handleClick}/>
                     </CheckContext.Provider>
                 </CounterCheckContext.Provider>
             </div>
